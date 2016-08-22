@@ -3,4 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index),
+    url(r'^admin$', views.admin),
+    url(r'^login$', views.login),
+    url(r'^dashboard$', views.dashboard),
 ]
