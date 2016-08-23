@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/dashboard/products">back</a>
+    <h3>Edittng {{product.name}}</h3>
+    <form class="" action="/editproduct/{{product.id}}" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+      Name: <input type="text" name="name" value="{{product.name}}">
+      Description: <textarea name="description" rows="8" cols="40">{{product.description}}</textarea>
+      Categories:
+      <select class="" name="pickcat">
+        {% for category in categories%}
+        <option value'{{category.name}}'>{{category.name}}</option>
+        {%endfor%}
+      </select>
+      Or add a new category: <input type="text" name="newcat" value="">
+      Price: <input type="text" name="price" value="{{product.price}}">
+      Inventory: <input type="text" name="inventory" value="{{product.inventory}}">
+      Image: <input type="file" name="image" value="" >
+      <input type="submit" name="Submit" value="Submit">
+    </form>
+    {%for message in messages%}
+    <p>{{message}}</p>
+    {%endfor%}
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="/dashboard/products">back</a>
+    <h3>add a new product</h3>
+    <form class="" action="/addproduct" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+      Name: <input type="text" name="name" value="">
+      Description: <textarea name="description" rows="8" cols="40"></textarea>
+      Categories:
+      <select class="" name="pickcat">
+        {% for category in categories%}
+        <option value'{{category.name}}'>{{category.name}}</option>
+        {%endfor%}
+      </select>
+      Or add a new category: <input type="text" name="newcat" value="">
+      Price: <input type="text" name="price" value="">
+      Inventory: <input type="text" name="inventory" value="0">
+      Images: <input type="file" name="image" value="" >
+      <input type="submit" name="Submit" value="Submit">
+    </form>
+    {%for message in messages%}
+    <p>{{message}}</p>
+    {%endfor%}
+  </body>
+</html>

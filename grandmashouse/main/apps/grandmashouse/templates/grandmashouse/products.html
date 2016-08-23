@@ -7,7 +7,52 @@
    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   </head>
   <body>
-    <h3><a href="/dashboard/orders">Orders</a><a href="/dashboard/products">Products</a><a href="/logout">Logout</a></h3>
+    <h3><a href="/dashboard/orders">Orders</a> <a href="/dashboard/products">Products</a> <a href="/logout">Logout</a> <a href="/new">New Product</a></h3>
     <h1>Products Here</h1>
+    <table>
+      <tr>
+        <th>
+          Picture |
+        </th>
+        <th>
+          ID |
+        </th>
+        <th>
+          Name |
+        </th>
+        <th>
+          Inventory Count |
+        </th>
+        <th>
+          Quantity sold |
+        </th>
+        <th>
+          Action
+        </th>
+      </tr>
+      {%for product in products%}
+      <tr>
+        <td>
+          <img src="{{MEDIA_URL}}{{product.image}}" alt="" />
+        </td>
+        <td>
+          {{product.id}}
+        </td>
+        <td>
+          {{product.name}}
+        </td>
+        <td>
+          {{product.inventory}}
+        </td>
+        <td>
+          {{product.sold}}
+        </td>
+        <td>
+          <a href="/edit/{{product.id}}">Edit</a>
+          <a href="/delete/{{product.id}}">Delete</a>
+        </td>
+      </tr>
+      {%endfor%}
+    </table>
   </body>
 </html>
