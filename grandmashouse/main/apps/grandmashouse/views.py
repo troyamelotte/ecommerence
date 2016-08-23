@@ -14,11 +14,22 @@ def login(request):
     check = User.userManager.checklog(request.POST['email'], request.POST['pass'])
     if check[0] == True:
         request.session['admin']=User.objects.get(email=request.POST['email']).id
-        return redirect('/dashboard')
+        return redirect('/dashboard/orders')
     else:
         for error in check:
             messages.error(request, error)
         return redirect ('/admin')
 
-def dashboard(request):
-    return render(request, 'grandmashouse/dashboard.html')
+def logout(request):
+    del request.session['admin']
+    return redirect('/admin')
+
+def products(request):
+    if not 'admin' in request.session:
+        return redirect('/admin')
+    return render(request, 'grandmashouse/products.html')
+
+def orders(request):
+    if not 'admin' in request.session:
+        return redirect('/admin')
+    return render(request, 'grandmashouse/orders.html')
