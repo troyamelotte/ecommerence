@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Product Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+<!-- Jquery!!!!!!!!!!!!!!! -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
+
+<script >
+ $(document).ready(function() {
+ 	 $('#pic_area img').on({
+ 	 	mouseover: function(){
+ 	 		$(this).css({
+ 	 			'cursor': 'pointer',
+ 	 			'border-color': '#994d33'
+ 	 		});
+ 	 	},
+
+ 	 	mouseout: function() {
+ 	 		$(this).css({
+ 	 			'curosr': 'default',
+ 	 			'border-Color': 'grey',
+ 	 		});
+ 	 	},
+
+ 	 	click: function (){
+ 	 		var imageUrl = $(this).attr('src');
+ 	 		$('#main_pic').attr('src', imageUrl)
+ 	 	}
+
+ 	 });
+ });
+
+ 
+</script>
+
+</head>
+<body>
+<style type="text/css"> 
+
+
+	*{
+		margin:0px;
+		padding: 0px;
+	}
+
+	#wrapper {
+		padding:20px;
+		width: 1112px;
+		height:1000px;
+		margin:0px auto;
+	}
+
+	/*nav bar*/
+	#top_nav {
+		padding: 5px;
+		background-color: #262626;
+		width: 100%;
+	}
+	#Gzone, #S_cart {
+		display: inline-block;
+		color:#ffffff;
+		margin-left: 15px;
+	}
+
+	#s_cart{
+	margin-left: 750px;
+	color: #ffffff;
+}
+
+
+
+#top_bar {
+	margin: 20px 0px 0px 10px;
+}
+
+
+/*main content*/
+
+#pic_box {
+	margin-top: 5px;
+}
+
+.sub_img {
+	height: 100px;
+	width: 100px;
+	border:3px solid grey;
+}
+
+#pic_area, #des_box {
+	display: inline-block;
+}
+
+#des_box {
+	vertical-align: top;
+	height: 600px;
+	width: 630px;
+	margin-left: 20px;
+}
+
+textarea {
+	font-size: 20px;
+	padding: 20px;
+}
+
+</style>
+
+<div id="wrapper">
+
+	<div id="top_nav">
+	<h2 id="Gzone">Granny Zone</h2><span id="s_cart">Shopping Cart{{}}</span>
+	</div>
+
+	<div id="top_bar">
+		<P style="font-size:22px;"><a href="#">Go Back</a></P>
+		<h2>Granny Zone Produts</h2>
+	</div>
+
+	<div id="pic_area">
+		<img id="main_pic"  height="400" width="412" style="border: 3px solid grey" 
+		src="http://i.imgur.com/9q3bDzc.jpg">
+		<br />
+		<div id="pic_box">
+		<img class="sub_img" src="http://i.imgur.com/438x3hh.jpg">
+		<img class="sub_img" src="http://i.imgur.com/KTUcUNy.jpg">
+		<img class="sub_img" src="http://i.imgur.com/ZDS3M1w.jpg">
+		<img class="sub_img" src="http://i.imgur.com/3lpFjRz.jpg">
+		</div>
+	</div>
+	
+	<textarea id="des_box" style="border: 3px solid grey">	
+		Description: Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....Sexy Grandma outfits.....
+	</textarea>
+	
+
+<div>
+
+<button style="margin-left:10px;">Buy</button>
+</div>
+
+<div id="similar_item"></div>
+	<h3>Similar_Items</h3>
+
+</div>
+
+
+
+</body>
+</html>
