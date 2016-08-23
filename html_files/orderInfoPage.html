@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<title>Order Info Page</title>
+</head>
+<style>
+/*	top nav bar standard!!!!!!!!!!*/
+
+	*{
+	margin:0px;
+	padding: 0px;
+	}
+
+	#wrapper {
+		padding:20px;
+		width: 1112px;
+		height:1000px;
+		margin:0px auto;
+	}
+
+	#top_nav {
+		padding: 5px;
+		background-color: #262626;
+		width: 100%;
+	}
+
+	#left_table #s_bar {
+		display: inline;
+	}
+
+
+
+#Gzone, #S_cart {
+	display: inline-block;
+	color:#ffffff;
+	margin-left: 15px;
+}
+
+#s_cart{
+	margin-left: 750px;
+	color: #ffffff;
+}
+
+/*^^^top nav bar standard!!!!!!!!!^^^^^^^^*/
+
+/*Table!!!!!!!!*/
+table, tr, td{
+	text-align: left;
+	/*margin-top: 30px;*/
+	margin: auto;
+	margin-top: 30px;
+	width: 900px;
+	/*margin-left: 350px*/;
+}
+
+
+
+</style>
+
+
+
+<body>
+
+<div id="wrapper">
+		<div id="top_nav">
+	<h2 id="Gzone">Granny Zone</h2><span id="s_cart">Shopping Cart{{}}</span>
+</div>
+
+
+<!-- Table!!!!!!!!!!!! -->
+
+<form action="#" method="POST">
+<table border="1px">
+	<tr>
+		<th>Item</th>
+		<th>Price</th>
+		<th>Quantity</th>
+		<th>Total</th>
+	</tr>
+
+	<tr>
+		<td>Gran</td>
+		<td>$$$$$</td>
+		<td>Gran {{}}</td>
+		<td>Gran</td>
+	</tr>
+
+	<tr>
+		<td>granny</td>
+		<td>$$$$$</td>
+		<td>Granny{{}}</td>
+		<td>Granny</td>
+	</tr>
+</table>
+
+	<div id="keep_shopping"> 
+	<p style="margin: 20px 0px 0px 930px;">Total:{{}}</p>
+	<button style="margin: 20px 0px 0px 860px;"><a href="#">Continue Shopping</a></button>
+	</div>
+</form>
+
+
+<h2>Shipping Infomration</h2>
+<form action="#" method="POST">
+	<label>First Name: </label><input type="text" name="first_name">
+	<label>Last Name: </label><input type="text" name="last_name">
+	<label>Address:</label><input type="text" name="address">
+	<label>Address 2:</label><input type="text" name="address">
+	<label>City:</label><input type="text" name="City">
+	<label>State:</label><input type="text" name="State">
+	<label>Zipcode:</label><input type="text" name="Zipcode"> 
+</form>
+
+<h2>Billing Information</h2>
+<form action="#" method="POST">
+	<p>First Name: <input type="text" name="first_name"></p> 
+	<p>Last Name: <input type="text" name="last_name"></p> 
+	<p>Address: <input type="text" name="address"></p> 
+	<p>Address 2: <input type="text" name="address"></p> 
+	<p>City: <input type="text" name="City"></p> 
+	<p>State: <input type="text" name="State"></p> 
+	<p>Zipcode: <input type="text" name="Zipcode"></p> 
+
+	<p>Card: <input type="text" name=""></p>
+	<p>Security Code:<input type="text" name=""></p>
+	<p>Expiration</p>
+	<button>Pay</button>
+</form>
+
+</div>
+</body>
+</html>
