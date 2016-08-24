@@ -168,7 +168,7 @@ ul.pagination li {
   </div>
 		{%for product in products%}
     <div class="product">
-      <img src="{{MEDIA_URL}}{{product.image}}" alt="" />
+      <a href="/product/{{product.id}}"><img src="{{MEDIA_URL}}{{product.image}}" alt="" /></a>
       <p>
         <b>{{product.name}}</b>
       </p>

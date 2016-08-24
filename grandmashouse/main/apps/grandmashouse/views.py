@@ -38,7 +38,14 @@ def filter(request, id):
     }
     return render(request, 'grandmashouse/index.html', context)
 
-
+def viewproduct(request, id):
+    product = Product.objects.get(id=id)
+    similar = Product.objects.filter(category=product.category).exclude(id=product.id)[:5]
+    context = {
+        'product':product,
+        'similar':similar
+    }
+    return render(request, 'grandmashouse/viewproduct.html', context)
 def admin(request):
 
     return render(request, 'grandmashouse/admin.html')
