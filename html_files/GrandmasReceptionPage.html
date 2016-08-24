@@ -12,48 +12,195 @@
 <body>
 
 <style>
+*{
+	margin:0px;
+	padding: 0px;
+}
+
 	#wrapper {
 		padding:20px;
+		width: 1112px;
+		height:1000px;
+		margin:0px auto;
+	}
+
+/*	top nav bar standard!!!!!!!!!!*/
+
+	#top_nav {
+		padding: 5px;
+		background-color: #262626;
+		width: 100%;
 	}
 
 	#left_table #s_bar {
 		display: inline;
 	}
 
-input {
+	#s_bar {
+		height: 30px;
+		width: 30px;
+	}
+
+#Gzone, #S_cart {
+	display: inline-block;
+	color:#ffffff;
+	margin-left: 15px;
+}
+
+#s_cart{
+	margin-left: 755px;
+	color: #ffffff;
+}
+
+#ser_bar {
 	opacity: 0.3;
 }
 
+/*^^^top nav bar standard!!!!!!!!!^^^^^^^^*/
+
+
+#left_table {
+	display: inline-block;
+	padding: 10px;
+	border:1px solid black;
+	height: 250px;
+	width: 250px;
+	vertical-align: top;
+	margin-top: 20px;
+}
+
+#item_list {
+	list-style: none;
+	font-size: 20px;
+}
+
+#right_table {
+	display: inline-block;
+	border:1px solid;
+	height: 500px;
+	width: 800px;
+	vertical-align: top;
+	margin-left: 15px;
+	margin-top: 20px;
+}
+
+ #page_list li {
+	display: inline-block;
+	list-style: none;
+	margin-left: 10px;
+}
+
+#right_table h2, #page_list {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+#page_list2 li{
+	display: inline;
+	list-style: none;
+}
+
+
+
+.r1 {
+	display: inline;
+	height: 40px;
+	width: 40px;
+	background-color: red;
+}
+
+.r2 {
+	display: inline;
+	height: 40px;
+	width: 40px;
+	background-color: blue;
+}
+
+.r3 {
+	display: inline;
+	height: 40px;
+	width: 40px;
+	background-color: green;
+}
+
+
+ul.pagination {
+	margin:380px 0px 0px 230px;
+    display: inline-block;
+  
+}
+
+ul.pagination li {
+	display: inline;
+}
 </style>
+
 
 <div id="wrapper">
 
+	<div id="top_nav">
+	<h2 id="Gzone">Granny Zone</h2><span id="s_cart">Shopping Cart{{}}</span>
+	</div>
+
 	<div id="left_table">
-		<input type="text" value="product name" name="">
-		<a href=""><img id="s_bar" src="http://imgur.com/VbGkUlw"></a>
+		<input id="ser_bar" type="text" value="product name" name="">
+		<a href=""><img id="s_bar" src="http://polarbearfarm.com/images/hero-icon-search.png"></a>
+
 		<form action="" name="">	
 		<h3>Categories</h3>
-		<ul>
-			<li>T</li>
-			<li>S</li>
-			<li>H</li>
-			<li>R</li>
-			<li>I</li>
-
+		<ul id="item_list">
+			<li>Shirt{{}}</li>
+			<li>Sweater{{}}</li>
+			<li>Hats{{}}</li>
+			<li>Underware{{}}</li>
+			<li>Show All</li>
 		</ul>
 		</form>
 	</div>	
 
-	<div id="product_chart">
+	<div id="right_table">
 		<h2>Tshirts {{page}}</h2>
-		<ul>
+		<ul id="page_list">
 			<li>first</li>
 			<li>previous</li>
 			<li>{{}}</li>
 			<li>next</li>
 		</ul>
-	</div>
+		<div id="row1">
+			<div class="r1"></div>
+			<div class="r1"></div>
+			<div class="r1"></div>
+		
+		</div>
+		
+		<div id="row2">
+			<div class="r2"></div>
+			<div class="r2"></div>
+			<div class="r2"></div>
+		
+		</div>	
+		
+		<div id="row3">
+			<div class="r3"></div>
+			<div class="r3"></div>
+			<div class="r3"></div>
+	
+		</div>
 
+		<ul class="pagination">
+		  <li><a href="#">«</a></li>
+		  <li><a href="#">1</a></li>
+		  <li><a href="#">2</a></li>
+		  <li><a href="#">3</a></li>
+		  <li><a href="#">4</a></li>
+		  <li><a href="#">5</a></li>
+		  <li><a href="#">6</a></li>
+		  <li><a href="#">7</a></li>
+		  <li><a href="#">»</a></li>
+		</ul>
+
+	</div>
+	
 </div>
 
 
