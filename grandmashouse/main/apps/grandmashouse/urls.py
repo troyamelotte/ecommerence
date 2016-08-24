@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^addproduct$', views.addproduct),
     url(r'^edit/(?P<id>\d+)$', views.edit),
     url(r'^delete/(?P<id>\d+)$', views.delete),
-    url(r'^editproduct/(?P<id>\d+)$', views.editproduct)
+    url(r'^editproduct/(?P<id>\d+)$', views.editproduct),
+    url(r'^filter/(?P<id>\d+)$', views.filter),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

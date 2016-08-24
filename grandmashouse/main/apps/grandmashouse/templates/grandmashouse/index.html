@@ -1,10 +1,197 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h5>we on</h5>
-  </body>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+	<meta charset="utf-8">
+	<title>GrandMasHouse</title>
+</head>
+<body>
+
+<style>
+*{
+	margin:0px;
+	padding: 0px;
+}
+	#wrapper {
+		padding:20px;
+		width: 1112px;
+		height:1000px;
+		margin:0px auto;
+	}
+/*	top nav bar standard!!!!!!!!!!*/
+	#top_nav {
+		padding: 5px;
+		background-color: #262626;
+		width: 100%;
+	}
+	#left_table #s_bar {
+		display: inline;
+	}
+	#s_bar {
+		height: 30px;
+		width: 30px;
+	}
+#Gzone, #S_cart {
+	display: inline-block;
+	color:#ffffff;
+	margin-left: 15px;
+}
+#s_cart{
+	margin-left: 755px;
+	color: #ffffff;
+}
+#ser_bar {
+	opacity: 0.3;
+}
+/*^^^top nav bar standard!!!!!!!!!^^^^^^^^*/
+#left_table {
+	display: inline-block;
+	padding: 10px;
+	border:1px solid black;
+	height: 250px;
+	width: 250px;
+	vertical-align: top;
+	margin-top: 20px;
+}
+#item_list {
+	list-style: none;
+	font-size: 20px;
+}
+#right_table {
+	display: inline-block;
+	border:1px solid;
+	height: auto;
+	width: 800px;
+	vertical-align: top;
+	margin-left: 15px;
+	margin-top: 20px;
+}
+ #page_list li {
+	display: inline-block;
+	list-style: none;
+	margin-left: 10px;
+}
+#right_table h2, #page_list {
+	display: inline-block;
+	margin-left: 10px;
+}
+#page_list2 li{
+	display: inline;
+	list-style: none;
+}
+.product{
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: top;
+}
+.product img{
+  height:200px;
+  width: 200px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.product p{
+  text-align: center;
+}
+.r1 {
+	display: inline;
+	height: 40px;
+	width: 40px;
+	background-color: red;
+}
+.r2 {
+	display: inline;
+	height: 40px;
+	width: 40px;
+	background-color: blue;
+}
+.r3 {
+	display: inline;
+	height: 40px;
+	width: 40px;
+	background-color: green;
+}
+ul.pagination {
+	margin:380px 0px 0px 230px;
+    display: inline-block;
+
+}
+ul.pagination li {
+	display: inline;
+}
+.pagination{
+  vertical-align: top;
+  display: block;
+}
+.headermenu{
+  display:block;
+}
+</style>
+
+
+<div id="wrapper">
+
+	<div id="top_nav">
+	<h2 id="Gzone">Granny Zone</h2><span id="s_cart">Shopping Cart</span>
+	</div>
+
+	<div id="left_table">
+		<input id="ser_bar" type="text" value="product name" name="">
+		<a href=""><img id="s_bar" src="http://polarbearfarm.com/images/hero-icon-search.png"></a>
+
+		<form action="" name="">
+		<h3>Categories</h3>
+		<ul id="item_list">
+		  {% for category in categories%}
+      <li><a href="/filter/{{category.id}}">{{category.name}}</a></li>
+      {%endfor%}
+			<li><a href="/">Show All</a></li>
+		</ul>
+		</form>
+	</div>
+
+	<div id="right_table">
+    <div class="headermenu">
+		<h2>Products</h2>
+    {% if products.has_previous %}
+      <a href="?page={{products.previous_page_number}}">previous</a>
+    {%endif%}
+    Page {{products.number}} of {{products.paginator.num_pages}}
+    {% if products.has_next %}
+      <a href="?page={{products.next_page_number}}">next</a>
+    {%endif%}
+  </div>
+		{%for product in products%}
+    <div class="product">
+      <img src="{{MEDIA_URL}}{{product.image}}" alt="" />
+      <p>
+        <b>{{product.name}}</b>
+      </p>
+      <p>
+        ${{product.price}}
+      </p>
+    </div>
+    {%endfor%}
+		<div class="pagination">
+      {% if products.has_previous %}
+        <a href="?page={{products.previous_page_number}}">previous</a>
+      {%endif%}
+      Page {{products.number}} of {{products.paginator.num_pages}}
+      {% if products.has_next %}
+        <a href="?page={{products.next_page_number}}">next</a>
+      {%endif%}
+		</div>
+
+	</div>
+
+</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
 </html>

@@ -5,7 +5,39 @@ from django.contrib import messages
 from .models import User, Product, Order, Category
 # Create your views here.
 def index(request):
-    return render(request, 'grandmashouse/index.html')
+    products_list = Product.objects.all()
+    categories = Category.objects.all()
+    paginator = Paginator(products_list, 9)
+    page = request.GET.get('page')
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+    context = {
+        'products': products,
+        'categories': categories,
+    }
+    return render(request, 'grandmashouse/index.html', context)
+
+def filter(request, id):
+    products_list = Product.objects.filter(category=Category.objects.get(id=id))
+    categories = Category.objects.all()
+    paginator = Paginator(products_list, 9)
+    page = request.GET.get('page')
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+    context = {
+        'products': products,
+        'categories': categories,
+    }
+    return render(request, 'grandmashouse/index.html', context)
+
 
 def admin(request):
 
