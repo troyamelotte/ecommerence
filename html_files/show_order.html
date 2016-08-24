@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Grandma's House</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  {% load staticfiles %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+</head>
+<body>
+
+<div class="container">
+  <img class="icon" src="{% static "dashboard/images/Grandma.png" %}" alt="My image" height="60" width="60"/>
+  <h1>Grandma's House</h1>
+
+  <!-- Top Navigation BAR -->
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Dashboard</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/orders">Orders</a></li>
+        <li><a href="/products">Products</a></li>
+      </ul>
+      <div class="logout">
+        <button type="button" class="btn btn-primary">Log Out</button>
+      </div>
+    </div>
+  </nav>
+
+    <!-- <div class="col-sm-3 col-md-3 pull-left">
+    <form class="navbar-form" role="search">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+        <div class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </div>
+    </form>
+    </div> -->
+
+    <div class="main_content">
+
+      <div class="left_box">
+        <h4>Order ID: 1<br><br></h4>
+        <p>
+          <span class="bold">Customer shipping info:</span><br>
+          Name: Bob<br>
+          Address: 123 Dojo Way<br>
+          City: Seattle<br>
+          State: WA<br>
+          Zip: 98133
+        </p>
+        <br>
+        <p>
+          <span class="bold">Customer Billing info:</span><br>
+          Name: Bob<br>
+          Address: 123 Dojo Way<br>
+          City: Seattle<br>
+          State: WA<br>
+          Zip: 98133
+        </p>
+      </div>
+      <div class="right_box">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantitiy</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>28</td>
+                <td>Sweater</td>
+                <td>$34.99</td>
+                <td>1</td>
+                <td>$34.99</td>
+              </tr>
+              <tr>
+                <td>60</td>
+                <td>T-Sherrrrrt</td>
+                <td>$19.99</td>
+                <td>3</td>
+                <td>$60.00</td>
+              </tr>
+            </tbody>
+          </table>
+
+        <div class="bottom_right">
+          <div class="shipped">
+            <h4>
+              <span class="white">Status: shipped</span>
+            </h4>
+          </div>
+          <div class="subtotal">
+            <p>
+              Sub total: $79.99<br>
+              Shipping: $1.00<br>
+              Total Price: $80.99
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
