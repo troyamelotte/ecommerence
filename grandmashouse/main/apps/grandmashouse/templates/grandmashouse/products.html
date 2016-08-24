@@ -53,6 +53,16 @@
         </td>
       </tr>
       {%endfor%}
+
     </table>
+    <div class="pagination">
+      {% if products.has_previous %}
+        <a href="?page={{products.previous_page_number}}">previous</a>
+      {%endif%}
+      Page {{products.number}} of {{products.paginator.num_pages}}
+      {% if products.has_next %}
+        <a href="?page={{products.next_page_number}}">next</a>
+      {%endif%}
+    </div>
   </body>
 </html>

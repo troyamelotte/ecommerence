@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import bcrypt
 from django.contrib import messages
 from .models import User, Product, Order, Category
@@ -27,7 +28,16 @@ def logout(request):
 def products(request):
     if not 'admin' in request.session:
         return redirect('/admin')
-    products = Product.objects.all()
+    products_list = Product.objects.all()
+    paginator = Paginator(products_list, 5)
+    page = request.GET.get('page')
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
     context = {
         'products': products,
     }
