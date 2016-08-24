@@ -11,21 +11,12 @@
     <!-- The line above tells Django to be ready to listen for static files -->
   <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-  <style>
-  .right {
-  position: absolute;
-  right: 0px;
-  width: 100px;
-  padding: 10px;
-}
 
-
-
-  </style>
 </head>
 <body>
 
 <div class="container">
+  <img class="icon" src="{% static "dashboard/images/Grandma.png" %}" alt="My image" height="60" width="60"/>
   <h1>Grandma's House</h1>
 
   <!-- Top Navigation BAR -->
@@ -36,14 +27,17 @@
         <a class="navbar-brand" href="#">Dashboard</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Orders</a></li>
-        <li><a href="{% static 'dashboard/templates/products.html' %}">Products</a></li>
+        <li class="active"><a href="/orders">Orders</a></li>
+        <li><a href="/products">Products</a></li>
       </ul>
-      <div class="right">
+      <div class="logout">
         <button type="button" class="btn btn-primary">Log Out</button>
       </div>
+
     </div>
   </nav>
+
+
 
     <div class="col-sm-3 col-md-3 pull-left">
     <form class="navbar-form" role="search">
@@ -59,9 +53,9 @@
   <table class="table table-striped">
       <thead>
         <tr>
-          <th>Picture</th>
+          <th>Order ID</th>
           <th>Name</th>
-          <th>Inventory Count</th>
+          <th>Date</th>
           <th>Billing Address</th>
           <th>Total</th>
           <th>Status</th>
@@ -141,6 +135,19 @@
 
       </tbody>
     </table>
+
+    <form action="/orders" method="POST">
+      {% csrf_token %}
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+        data-amount="6599"
+        data-name="Granny Zone"
+        data-description="Checkout"
+        data-image="{% static "dashboard/images/Grandma.png" %}"
+        data-locale="auto">
+      </script>
+    </form>
 
     <ul class="pagination">
       <li><a href="#">1</a></li>
