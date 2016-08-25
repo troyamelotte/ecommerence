@@ -64,20 +64,49 @@ class Product(models.Model):
     productManager = ProductManager()
     objects = models.Manager()
 
+class OrderManager(models.Manager):
+    def checkorder(self, name, address, city, state, zipcode):
+        errorlist = []
+        count = 0
+        if len(name)<1:
+            count+=1
+            errorlist.append('Enter a name please!')
+        if len(address)<1:
+            count+=1
+            errorlist.append('Enter a address please!')
+        if len(city)<1:
+            count+=1
+            errorlist.append('Enter a city please!')
+        if len(state)<1:
+            count+=1
+            errorlist.append('Enter a state please!')
+        if len(zipcode)<1:
+            count+=1
+            errorlist.append('Enter a zip code please!')
+
+        if count == 0:
+            return True;
+        return errorlist
 
 
 class Order(models.Model):
     name = models.CharField(max_length=100)
+    billingname = models.CharField(max_length=100, default=None)
     date = models.DateField()
     address = models.CharField(max_length=200)
+    billingaddress = models.CharField(max_length=200, default=None)
     total = models.FloatField()
     status = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
+    orderManager = OrderManager()
+    objects = models.Manager()
+
 
 class Ordercontent(models.Model):
     product = models.ForeignKey(Product, related_name='OrdercontentToProduct')
     order = models.ForeignKey(Order, related_name= 'OrdercontentToOrder')
+    quantity = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 

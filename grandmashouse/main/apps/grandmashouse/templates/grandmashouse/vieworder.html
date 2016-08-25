@@ -7,11 +7,10 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
   {% load staticfiles %}
     <!-- The line above tells Django to be ready to listen for static files -->
   <!-- <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"media="screen" title="no title"  charset="utf-8"> -->
-
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
   <style>
   h1 {
     display: inline-block;
@@ -90,20 +89,6 @@
   .white {
     color: white;
   }
-  td img{
-    width:100px;
-    height: 100px;
-  }
-  .pagination a{
-    color:blue;
-  }
-  .addproduct{
-    position: absolute;
-    right: 42px;
-    top: 50px;
-    width: 100px;
-    padding: 10px;
-  }
   </style>
 </head>
 <body>
@@ -111,6 +96,7 @@
 <div class="container">
   <img class="icon" src="https://cdn4.iconfinder.com/data/icons/avatar-and-user/87/Avatar_person_user_character_man_woman_human-13-512.png" alt="My image" height="60" width="60"/>
   <h1>Grandma's House</h1>
+  <br><br>
 
   <!-- Top Navigation BAR -->
 
@@ -121,18 +107,15 @@
       </div>
       <ul class="nav navbar-nav">
         <li><a href="/dashboard/orders">Orders</a></li>
-        <li class="active"><a href="/dashboard/products">Products</a></li>
+        <li><a href="/dashboard/products">Products</a></li>
       </ul>
       <div class="logout">
         <a href="/logout"><button type="button" class="btn btn-primary">Log Out</button></a>
       </div>
-      <div class="addproduct">
-        <a href="/new"><button type="button" class="btn btn-primary">Add a Product</button></a>
-      </div>
     </div>
   </nav>
 
-    <div class="col-sm-3 col-md-3 pull-left">
+    <!-- <div class="col-sm-3 col-md-3 pull-left">
     <form class="navbar-form" role="search">
     <div class="input-group">
         <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
@@ -141,46 +124,66 @@
         </div>
     </div>
     </form>
+    </div> -->
+
+    <div class="main_content">
+
+      <div class="left_box">
+        <h4>Order ID: {{order.id}}<br><br></h4>
+        <p>
+          <span class="bold">Customer shipping info:</span><br>
+          Name: {{order.name}}<br>
+          Address: {{order.address}}<br>
+        </p>
+        <br>
+        <p>
+          <span class="bold">Customer Billing info:</span><br>
+          Name: {{order.billingname}}<br>
+          Address: {{order.billingaddress}}<br>
+        </p>
+      </div>
+      <div class="right_box">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantitiy</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in orderitems%}
+              <tr>
+
+                <td>{{item.product.id}}</td>
+                <td>{{item.product.name}}</td>
+                <td>${{item.product.price}}</td>
+                <td>{{item.quantity}}</td>
+                {% load apptags %}
+                <td>${{item.quantity|multiply:item.product.price}}</td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+
+        <div class="bottom_right">
+          <div class="shipped">
+            <h4>
+              <span class="white">Status: {{order.status}}</span>
+            </h4>
+          </div>
+          <div class="subtotal">
+            <p>
+              Grand Total: {{order.total}}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
-  <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Picture</th>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Inventory Count</th>
-          <th>Quantitiy Sold</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        {%for product in products%}
-        <tr>
-          <td><img src="{{MEDIA_URL}}{{product.image}}" alt="" /></td>
-          <td>{{product.id}}</td>
-          <td>{{product.name}}</td>
-          <td>{{product.inventory}}</td>
-          <td>{{product.sold}}</td>
-          <td>
-            <a href="/edit/{{product.id}}">edit</a>&nbsp;&nbsp;&nbsp;
-            <a href="/delete/{{product.id}}">delete</a>
-          </td>
-        </tr>
-        {%endfor%}
 
-      </tbody>
-    </table>
-
-    <div class="pagination">
-      {% if products.has_previous %}
-        <a href="?page={{products.previous_page_number}}">previous</a>
-      {%endif%}
-      Page {{products.number}} of {{products.paginator.num_pages}}
-      {% if products.has_next %}
-        <a href="?page={{products.next_page_number}}">next</a>
-      {%endif%}
-    </div>
 </div>
 
 </body>

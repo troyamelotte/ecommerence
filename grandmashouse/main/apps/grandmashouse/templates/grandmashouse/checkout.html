@@ -37,6 +37,10 @@
 	margin-left: 750px;
 	color: #ffffff;
 }
+.pay{
+  margin-top:15px;
+  margin-bottom:35px;
+}
 /*^^^top nav bar standard!!!!!!!!!^^^^^^^^*/
 /*Table!!!!!!!!*/
 table, tr, td{
@@ -78,7 +82,7 @@ p {
     {% if item.product_id|floatformat == product.id|floatformat %}
 		<td>{{item.quantity}}</td>
     {% load apptags %}
-    <td>{{item.quantity|multiply:product.price}}</td>
+    <td>${{item.quantity|multiply:product.price}}</td>
 
     {%endif%}
     {%endfor%}
@@ -89,35 +93,44 @@ p {
 </table>
 <a href="/deletecart">Empty Cart</a>
 	<div id="keep_shopping">
-	<p style="margin: 20px 0px 0px 930px;"><b>Total:</b>{{total}}</p>
+	<p style="margin: 20px 0px 0px 930px;"><b>Total:</b>${{total}}</p>
 	<button style="margin: 20px 0px 0px 860px;"><a href="/">Continue Shopping</a></button>
 	</div>
 
 
 <h2>Shipping Infomration</h2>
-<form action="#" method="POST">
-	<p>First Name:</p> <input type="text" name="first_name">
-	<p>Last Name:</p> <input type="text" name="last_name">
-	<p>Address:</p><input type="text" name="address">
-	<p>Address 2:</p><input type="text" name="address">
-	<p>City:</p><input type="text" name="City">
-	<p>State:</p><input type="text" name="State">
-	<p>Zipcode:</p><input type="text" name="Zipcode">
-</form>
+  <form action="/order/new/{{total}}" method="POST">
+	<p>Full Name:</p> <input type="text" name="sname">
+	<p>Address:</p><input type="text" name="saddress">
+	<p>City:</p><input type="text" name="scity">
+	<p>State:</p><input type="text" name="sstate">
+	<p>Zipcode:</p><input type="text" name="szipcode">
+
 
 <h2>Billing Information</h2>
-<form action="#" method="POST">
-	<p>First Name: </p> <input type="text" name="first_name">
-	<p>Last Name: </p> <input type="text" name="last_name">
-	<p>Address:</p>  <input type="text" name="address">
-	<p>Address2:</p> <input type="text" name="address">
-	<p>City: </p> <input type="text" name="City">
-	<p>State: </p> <input type="text" name="State">
-	<p>Zipcode: </p> <input type="text" name="Zipcode"><br>
+	<p>Full Name: </p> <input type="text" name="bname">
+	<p>Address:</p>  <input type="text" name="baddress">
+	<p>City: </p> <input type="text" name="bcity">
+	<p>State: </p> <input type="text" name="bstate">
+	<p>Zipcode: </p> <input type="text" name="bzipcode"><br>
 
-	<button>Pay</button>
+{%for message in messages%}
+{{message}}
+{%endfor%}
+
+      {% csrf_token %}
+      <div class="pay">
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+        data-amount="{{totalcard}}"
+        data-name="Granny Zone"
+        data-description="Checkout"
+        data-image="https://cdn4.iconfinder.com/data/icons/avatar-and-user/87/Avatar_person_user_character_man_woman_human-13-512.png"
+        data-locale="auto">
+      </script>
+    </div>
 </form>
-
 </div>
 </body>
 </html>

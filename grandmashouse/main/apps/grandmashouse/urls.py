@@ -17,7 +17,9 @@ urlpatterns = [
     url(r'^filter/(?P<id>\d+)$', views.filter),
     url(r'^product/(?P<id>\d+)$', views.viewproduct),
     url(r'^addcart/(?P<id>\d+)$', views.addcart),
-    url(r'^checkout', views.checkout),
-    url(r'^deletecart', views.deletecart),
+    url(r'^checkout$', views.checkout),
+    url(r'^deletecart$', views.deletecart),
+    url(r'^order/new/(?P<total>\d.+)$', views.ordernew),
+    url(r'^order/view/(?P<id>\d+)$', views.vieworder)
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

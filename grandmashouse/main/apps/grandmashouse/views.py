@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import bcrypt
 from django.contrib import messages
-from .models import User, Product, Order, Category
+import datetime
+from .models import User, Product, Order, Category, Ordercontent
 # Create your views here.
 def index(request):
     if not 'cart' in request.session:
@@ -41,6 +42,36 @@ def filter(request, id):
         'categories': categories,
     }
     return render(request, 'grandmashouse/index.html', context)
+
+def ordernew(request, total):
+    shippingcheck = Order.orderManager.checkorder(request.POST['sname'], request.POST['saddress'], request.POST['scity'], request.POST['sstate'], request.POST['szipcode'])
+    billingcheck =  Order.orderManager.checkorder(request.POST['bname'], request.POST['baddress'], request.POST['bcity'], request.POST['bstate'], request.POST['bzipcode'])
+    if shippingcheck == True and billingcheck == True:
+        address=str(request.POST['saddress'])+', '+str(request.POST['scity'])+ ', '+str(request.POST['sstate'])+ ', ' +str(request.POST['szipcode'])
+        billingaddress = str(request.POST['baddress'])+', '+str(request.POST['bcity'])+ ', '+str(request.POST['bstate'])+ ', ' +str(request.POST['bzipcode'])
+        order = Order.objects.create(name=request.POST['sname'], billingname = request.POST['bname'], date = datetime.datetime.now(), address = address, billingaddress=billingaddress, total = total, status = 'In Progress')
+        productlist = []
+        quantitylist = []
+
+        for item in request.session['cart']:
+            productlist.append(item.get('product_id'))
+            quantitylist.append(item.get('quantity'))
+        for i in range(0,len(productlist)):
+            Ordercontent.objects.create(product=Product.objects.get(id=productlist[i]), order = order, quantity = quantitylist[i])
+            producterino = Product.objects.get(id=productlist[i])
+            val = producterino.sold
+            val += quantitylist[i]
+            producterino.sold = val
+            producterino.save()
+
+        del request.session['cart']
+        return redirect('/')
+    else:
+        for error in shippingcheck:
+            messages.error(request, error)
+        for error in billingcheck:
+            messages.error(request, error)
+        return redirect ('/checkout')
 
 def viewproduct(request, id):
     if not 'cart' in request.session:
@@ -86,11 +117,12 @@ def checkout(request):
     for cost in itemlist:
         total+=cost
     print itemlist
-
+    totalcard = str(total).replace('.','')
     context = {
         'cartcount':cartcount,
         'products':products,
         'total':total,
+        'totalcard':totalcard,
 
     }
     return render(request, 'grandmashouse/checkout.html', context)
@@ -129,7 +161,28 @@ def products(request):
 def orders(request):
     if not 'admin' in request.session:
         return redirect('/admin')
-    return render(request, 'grandmashouse/orders.html')
+    orders_list = Order.objects.all().order_by('-id')
+    paginator = Paginator(orders_list, 5)
+    page = request.GET.get('page')
+    try:
+        orders = paginator.page(page)
+    except PageNotAnInteger:
+        orders = paginator.page(1)
+    except EmptyPage:
+        orders = paginator.page(paginator.num_pages)
+    context = {
+        'orders':orders,
+    }
+    return render(request, 'grandmashouse/orders.html', context)
+
+def vieworder(request, id):
+    order = Order.objects.get(id=id)
+    orderitems = Ordercontent.objects.filter(order=order)
+    context = {
+        'order':order,
+        'orderitems':orderitems,
+    }
+    return render(request, 'grandmashouse/vieworder.html', context)
 
 def new(request):
     category = Category.objects.all()
