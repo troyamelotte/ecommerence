@@ -4,20 +4,27 @@
     <meta charset="utf-8">
     <title>Edit Product</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% load staticfiles %}
       <!-- The line above tells Django to be ready to listen for static files -->
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet"> -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+
   </head>
+
   <body>
-    <div class="container">
+    <div class="wrapper">
+
       <img class="icon" src="{% static "dashboard/images/Grandma.png" %}" alt="My image" height="60" width="60"/>
       <h1 class="w3-text-blue-grey">Edit Product - ID 4</h1>
 
-      
+
    <form class="w3-container" action="/new" method="post">
        {%csrf_token%}
        <label class="w3-label w3-text-blue-grey"><b>Name</b></label>
@@ -28,11 +35,25 @@
        <br><br>
 
        <label class="w3-label w3-text-blue-grey"><b>Choose Category</b></label>
-       <select class="w3-select" name="pickcat">
-          <option value="1">Shirt</option>
+       <!-- Category DropDown menu -->
+       <nav id="primary_nav_wrap">
+       <ul>
+         <li><a href="#">Choose Category</a>
+           <ul>
+             <li>Ugly Sweaters
+               <a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+               <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+             </li>
+             <li><a href="#">Bingo Sets</a></li>
+             <li><a href="#">Hats</a></li>
+           </ul>
+       </ul>
+       </nav>
+       <!-- <select class="w3-select" name="pickcat">
+          <option value="1">Shirt <a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a> </option>
           <option value="2">Sweater</option>
           <option value="3">Hat</option>
-       </select>
+       </select> -->
        <br><br>
        <label class="w3-label w3-text-blue-grey"><b>Or add a new category:</b></label>
        <input class="w3-input w3-border w3-light-grey" type="text" name="newcat" value="">
@@ -43,7 +64,26 @@
 
        <input class="w3-btn w3-blue-grey" type="submit" name="Submit" value="Update">
     </form>
+
     <br><br><br><br>
+
+    <!-- ####################### -->
+
+
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <div class="dropdown-content">
+        <ul>
+            <li><a href="#">Link 1</a><a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+        </ul>
+      </div>
     </div>
+
+
+   <br><br><br><br>
+    </div>
+
   </body>
 </html>
