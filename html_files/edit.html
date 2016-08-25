@@ -10,11 +10,227 @@
     {% load staticfiles %}
       <!-- The line above tells Django to be ready to listen for static files -->
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+    <!-- <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"media="screen" title="no title"  charset="utf-8"> -->
 
     <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet"> -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <style>
+
+    h1 {
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .wrapper {
+      width: 700px;
+      margin: auto;
+    }
+
+    .icon {
+      display: inline-block;
+      margin-right: 15px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .right {
+        position: absolute;
+        right: 200px;
+        width: 600px;
+        border: 3px solid #73AD21;
+        padding: 10px;
+        vertical-align: top;
+    }
+
+    .logout {
+        position: absolute;
+        right: 0px;
+        width: 100px;
+        padding: 10px;
+    }
+
+    .main_content {
+      width: 1000px;
+      height: 600px;
+      margin: auto;
+      vertical-align: top;
+    }
+
+    .left_box {
+      width: 300px;
+      height: 500px;
+      display: inline-block;
+      border: solid 3px;
+      border-color: grey;
+      vertical-align: top;
+      padding-left: 15px;
+    }
+
+    .right_box {
+      width: 600px;
+      height: 200px;
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 30px;
+      margin-bottom: 150px;
+    }
+
+    .bottom_right {
+      margin-top: 100px;
+      width: 600px;
+      height: 200px;
+    }
+
+    .shipped{
+      background-color: #009933;
+      width: 250px;
+      border: solid 1px;
+      padding: 15px 5px 5px 15px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .subtotal {
+      border: solid 2px;
+      padding: 5px;
+      width: 250px;
+      display: inline-block;
+      margin-left: 35px;
+    }
+
+    .white {
+      color: white;
+    }
+
+    /* CSS Dropdown */
+    #primary_nav_wrap
+    {
+    	margin-top:15px;
+    }
+
+    #primary_nav_wrap ul
+    {
+    	list-style:none;
+    	position:relative;
+    	float:left;
+    	margin:0;
+    	padding:0
+    }
+
+    #primary_nav_wrap ul a
+    {
+    	display:block;
+    	color:#333;
+    	text-decoration:none;
+    	font-weight:700;
+    	font-size:12px;
+    	line-height:32px;
+    	padding:0 15px;
+    	font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
+    }
+
+    #primary_nav_wrap ul li
+    {
+    	position:relative;
+    	float:left;
+    	margin:0;
+    	padding:0
+    }
+
+    #primary_nav_wrap ul li.current-menu-item
+    {
+    	background:#ddd
+    }
+
+    #primary_nav_wrap ul li:hover
+    {
+    	background:#f6f6f6
+    }
+
+    #primary_nav_wrap ul ul
+    {
+    	display:none;
+    	position:absolute;
+    	top:100%;
+    	left:0;
+    	background:#fff;
+    	padding:0
+    }
+
+    #primary_nav_wrap ul ul li
+    {
+    	float:none;
+    	width:400px
+      border: solid;
+    }
+
+    #primary_nav_wrap ul ul a
+    {
+    	line-height:120%;
+    	padding:10px 15px
+    }
+
+    #primary_nav_wrap ul ul ul
+    {
+    	top:0;
+    	left:100%
+    }
+
+    #primary_nav_wrap ul li:hover > ul
+    {
+    	display:block
+    }
+     #primary_nav_wrap a {
+       display: inline-block;
+     }
+    /*End of first drop nav*/
+
+    /* Beginning next drop down*/
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+
+    .dropdown-content li {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {background-color: #f1f1f1}
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+
+    </style>
 
   </head>
 
