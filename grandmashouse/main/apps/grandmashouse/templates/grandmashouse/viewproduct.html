@@ -112,12 +112,19 @@ textarea {
   margin-top: -200px;
   margin-left: 30px;
 }
+#quantity{
+  width:35px;
+}
+#s_cart a{
+  text-decoration: none;
+  color: white;
+}
 </style>
 
 <div id="wrapper">
 
 	<div id="top_nav">
-	<h2 id="Gzone">Granny Zone</h2><span id="s_cart">Shopping Cart</span>
+	<h2 id="Gzone">Granny Zone</h2><span id="s_cart"><a href="/checkout">Shopping Cart ({{cartcount}})</a></span>
 	</div>
 
 	<div id="top_bar">
@@ -144,7 +151,11 @@ textarea {
 
 <div class='price'>
 <h3>Price: {{product.price}}</h3>
-<button style="margin-left:10px;">Buy</button>
+<form class="buy" action="/addcart/{{product.id}}" method="post">
+  {%csrf_token%}
+  <input type="submit" name="Submit" value="Add To Cart">
+  <input type="number" id='quantity' name="quantity" value="1">
+</form>
 </div>
 
 <div id="similar_item">

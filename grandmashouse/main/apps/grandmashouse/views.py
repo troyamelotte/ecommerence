@@ -5,8 +5,11 @@ from django.contrib import messages
 from .models import User, Product, Order, Category
 # Create your views here.
 def index(request):
+    if not 'cart' in request.session:
+        request.session['cart']=[]
     products_list = Product.objects.all()
     categories = Category.objects.all()
+    cartcount = len(request.session['cart'])
     paginator = Paginator(products_list, 9)
     page = request.GET.get('page')
     try:
@@ -18,6 +21,7 @@ def index(request):
     context = {
         'products': products,
         'categories': categories,
+        'cartcount':cartcount,
     }
     return render(request, 'grandmashouse/index.html', context)
 
@@ -39,17 +43,57 @@ def filter(request, id):
     return render(request, 'grandmashouse/index.html', context)
 
 def viewproduct(request, id):
+    if not 'cart' in request.session:
+        request.session['cart']=[]
     product = Product.objects.get(id=id)
     similar = Product.objects.filter(category=product.category).exclude(id=product.id)[:5]
+    cartcount = len(request.session['cart'])
+    print request.session['cart']
     context = {
         'product':product,
-        'similar':similar
+        'similar':similar,
+        'cartcount':cartcount,
     }
     return render(request, 'grandmashouse/viewproduct.html', context)
+
 def admin(request):
 
     return render(request, 'grandmashouse/admin.html')
 
+def addcart(request, id):
+    cart = request.session['cart']
+    cart.append(dict({'product_id': id, 'quantity': int(request.POST['quantity'])}))
+    request.session['cart']=cart
+    return redirect('/product/'+str(id))
+
+def deletecart(request):
+    del request.session['cart']
+    return redirect('/')
+
+def checkout(request):
+    cartcount = len(request.session['cart'])
+    item_ids = []
+    for item in request.session['cart']:
+        item_ids.append(int(item.get('product_id')))
+    products = Product.objects.filter(id__in=item_ids)
+    productlist = []
+    itemlist = []
+    total = 0;
+    for product in products:
+        productlist.append(product.price)
+    for i in range(0,len(request.session['cart'])):
+        itemlist.append(request.session['cart'][i].get('quantity') * productlist[i])
+    for cost in itemlist:
+        total+=cost
+    print itemlist
+
+    context = {
+        'cartcount':cartcount,
+        'products':products,
+        'total':total,
+
+    }
+    return render(request, 'grandmashouse/checkout.html', context)
 def login(request):
     check = User.userManager.checklog(request.POST['email'], request.POST['pass'])
     if check[0] == True:
