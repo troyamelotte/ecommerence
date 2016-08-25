@@ -31,7 +31,7 @@
       display: inline-block;
       margin-right: 15px;
       margin-top: 10px;
-      margin-bottom: 10px;
+    
     }
 
     .bold {
@@ -107,94 +107,13 @@
       color: white;
     }
 
-    /* CSS Dropdown */
-    #primary_nav_wrap
-    {
-    	margin-top:15px;
-    }
 
-    #primary_nav_wrap ul
-    {
-    	list-style:none;
-    	position:relative;
-    	float:left;
-    	margin:0;
-    	padding:0
-    }
-
-    #primary_nav_wrap ul a
-    {
-    	display:block;
-    	color:#333;
-    	text-decoration:none;
-    	font-weight:700;
-    	font-size:12px;
-    	line-height:32px;
-    	padding:0 15px;
-    	font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
-    }
-
-    #primary_nav_wrap ul li
-    {
-    	position:relative;
-    	float:left;
-    	margin:0;
-    	padding:0
-    }
-
-    #primary_nav_wrap ul li.current-menu-item
-    {
-    	background:#ddd
-    }
-
-    #primary_nav_wrap ul li:hover
-    {
-    	background:#f6f6f6
-    }
-
-    #primary_nav_wrap ul ul
-    {
-    	display:none;
-    	position:absolute;
-    	top:100%;
-    	left:0;
-    	background:#fff;
-    	padding:0
-    }
-
-    #primary_nav_wrap ul ul li
-    {
-    	float:none;
-    	width:400px
-      border: solid;
-    }
-
-    #primary_nav_wrap ul ul a
-    {
-    	line-height:120%;
-    	padding:10px 15px
-    }
-
-    #primary_nav_wrap ul ul ul
-    {
-    	top:0;
-    	left:100%
-    }
-
-    #primary_nav_wrap ul li:hover > ul
-    {
-    	display:block
-    }
-     #primary_nav_wrap a {
-       display: inline-block;
-     }
-    /*End of first drop nav*/
 
     /* Beginning next drop down*/
     .dropbtn {
         background-color: #4CAF50;
         color: white;
-        padding: 16px;
+        padding: 10px;
         font-size: 16px;
         border: none;
         cursor: pointer;
@@ -209,7 +128,7 @@
         display: none;
         position: absolute;
         background-color: #f9f9f9;
-        min-width: 160px;
+        min-width: 230px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
 
@@ -218,6 +137,7 @@
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+
     }
 
     .dropdown-content a:hover {background-color: #f1f1f1}
@@ -250,9 +170,31 @@
        <textarea class="w3-input w3-border w3-light-grey" rows="8" cols="40" name="description"></textarea>
        <br><br>
 
-       <label class="w3-label w3-text-blue-grey"><b>Choose Category</b></label>
+       <label class="w3-label w3-text-blue-grey"><b>Category:</b></label>
+       <div class="dropdown">
+         <button class="dropbtn">Choose Category</button>
+         <div class="dropdown-content">
+           <ul>
+               <li>
+                 <a href="#">Sweater</a>&nbsp;&nbsp;
+                 <a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                 <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+               </li>
+               <li>
+                 <a href="#">Hat</a>&nbsp;&nbsp;
+                 <a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                 <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+               </li>
+               <li>
+                 <a href="#">Bingo Stuff</a>&nbsp;&nbsp;
+                 <a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                 <a href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+               </li>
+           </ul>
+         </div>
+       </div>
        <!-- Category DropDown menu -->
-       <nav id="primary_nav_wrap">
+       <!-- <nav id="primary_nav_wrap">
        <ul>
          <li><a href="#">Choose Category</a>
            <ul>
@@ -264,7 +206,7 @@
              <li><a href="#">Hats</a></li>
            </ul>
        </ul>
-       </nav>
+       </nav> -->
        <!-- <select class="w3-select" name="pickcat">
           <option value="1">Shirt <a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a> </option>
           <option value="2">Sweater</option>
@@ -283,22 +225,7 @@
 
     <br><br><br><br>
 
-    <!-- ####################### -->
 
-
-    <div class="dropdown">
-      <button class="dropbtn">Dropdown</button>
-      <div class="dropdown-content">
-        <ul>
-            <li><a href="#">Link 1</a><a href="#"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-        </ul>
-      </div>
-    </div>
-
-
-   <br><br><br><br>
     </div>
 
   </body>
