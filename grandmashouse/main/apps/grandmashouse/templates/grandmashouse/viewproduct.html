@@ -44,6 +44,11 @@
 		margin:0px;
 		padding: 0px;
 	}
+	.icon {
+		display: inline-block;
+		margin-left: 15px;
+
+	}
 	#wrapper {
 		padding:20px;
 		width: 1112px;
@@ -55,6 +60,7 @@
 		padding: 5px;
 		background-color: #262626;
 		width: 100%;
+		border-radius: 15px;
 	}
 	#Gzone, #S_cart {
 		display: inline-block;
@@ -80,6 +86,7 @@
 #pic_area, #des_box {
 	display: inline-block;
 }
+
 #des_box {
 	vertical-align: top;
 	height: 600px;
@@ -87,6 +94,8 @@
 	margin-left: 20px;
   font-size:20px;
   padding:5px;
+	border-radius: 10px;
+	border:2px solid black;
 }
 #similar_item{
   text-align: center;
@@ -118,14 +127,25 @@ textarea {
 #s_cart a{
   text-decoration: none;
   color: white;
+	margin-left: 125px;
+}
+h2 {
+	display: inline-block;
 }
 </style>
 
 <div id="wrapper">
-
 	<div id="top_nav">
-	<h2 id="Gzone">Granny Zone</h2><span id="s_cart"><a href="/checkout">Shopping Cart ({{cartcount}})</a></span>
+		<div class="icon">
+			<img src="{{MEDIA_URL}}/photos/Grandma_white.png" alt="" height="60" width="60"/>
+		</div>
+		<h2 id="Gzone">Granny Zone</h2>
+		<span id="s_cart"><a href="/checkout">Shopping Cart ({{cartcount}})</a></span>
 	</div>
+
+	<!-- <div id="top_nav">
+	<h2 id="Gzone">Granny Zone</h2><span id="s_cart"><a href="/checkout">Shopping Cart ({{cartcount}})</a></span>
+	</div> -->
 
 	<div id="top_bar">
 		<P style="font-size:22px;"><a href="/">Go Back</a></P>
