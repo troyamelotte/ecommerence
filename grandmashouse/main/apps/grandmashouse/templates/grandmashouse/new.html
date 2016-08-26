@@ -22,6 +22,12 @@
       margin-bottom: 15px;
     }
 
+    .error {
+      width: 400px;
+      background-color: red;
+      padding: 15px;
+    }
+
     .wrapper {
       width: 700px;
       margin: auto;
@@ -160,6 +166,10 @@
       <h1 class="w3-text-blue-grey">Add Product</h1>
     <br><br>
 
+    {%for message in messages%}
+    <p class="w3-label w3-text-blue-grey">{{message}}</p>
+    {%endfor%}
+
     <form class="w3-container" action="/addproduct" method="post" enctype="multipart/form-data">
       {%csrf_token%}
       <label class="w3-label w3-text-blue-grey"><b>Name:</b></label> <input class="w3-input w3-border w3-light-grey" type="text" name="name" value=""><br>
@@ -176,9 +186,7 @@
       <label class="w3-label w3-text-blue-grey"><b>Images:</b></label> <input class="w3-input w3-border w3-light-grey" type="file" name="image" value="" ><br>
       <input class="w3-btn w3-blue-grey" type="submit" name="Submit" value="Submit">
     </form>
-    {%for message in messages%}
-    <p>{{message}}</p>
-    {%endfor%}
+
 
     <br><br><br><br>
 
