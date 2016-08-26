@@ -12,10 +12,14 @@
 <body>
 
 <style>
-*{
+* {
 	margin:0px;
 	padding: 0px;
 }
+.icon {
+	margin-left: 10px;
+}
+
 	#wrapper {
 		padding:20px;
 		width: 1112px;
@@ -27,6 +31,7 @@
 		padding: 5px;
 		background-color: #262626;
 		width: 100%;
+		border-radius: 25px;
 	}
 	#left_table #s_bar {
 		display: inline;
@@ -51,11 +56,12 @@
 #left_table {
 	display: inline-block;
 	padding: 10px;
-	border:1px solid black;
+	border:2px solid black;
 	height: 250px;
 	width: 250px;
 	vertical-align: top;
 	margin-top: 20px;
+	border-radius: 10px;
 }
 #item_list {
 	list-style: none;
@@ -63,12 +69,14 @@
 }
 #right_table {
 	display: inline-block;
-	border:1px solid;
+	border:2px solid;
 	height: auto;
 	width: 800px;
 	vertical-align: top;
 	margin-left: 15px;
 	margin-top: 20px;
+	padding-left: 20px;
+	border-radius: 10px;
 }
  #page_list li {
 	display: inline-block;
@@ -135,12 +143,14 @@ ul.pagination li {
   text-decoration: none;
   color: white;
 }
+
 </style>
 
-
 <div id="wrapper">
-
 	<div id="top_nav">
+	<div class="icon">
+		<img src="{{MEDIA_URL}}/photos/Grandma_white.png" alt="" height="60" width="60"/>
+	</div>
 	<h2 id="Gzone">Granny Zone</h2><span id="s_cart"><a href="/checkout">Shopping Cart ({{cartcount}})</a></span>
 	</div>
 
@@ -163,15 +173,19 @@ ul.pagination li {
     <div class="headermenu">
 		<h2>Products</h2>
     {% if products.has_previous %}
-      <a href="?page={{products.previous_page_number}}">previous</a>
+		<p>
+	      <a href="?page={{products.previous_page_number}}">previous</a>
+	    {%endif%}
+	    Page {{products.number}} of {{products.paginator.num_pages}}
+	    {% if products.has_next %}
+	      <a href="?page={{products.next_page_number}}">next</a>
+		</p>
     {%endif%}
-    Page {{products.number}} of {{products.paginator.num_pages}}
-    {% if products.has_next %}
-      <a href="?page={{products.next_page_number}}">next</a>
-    {%endif%}
+
   </div>
 		{%for product in products%}
     <div class="product">
+
       <a href="/product/{{product.id}}"><img src="{{MEDIA_URL}}{{product.image}}" alt="" /></a>
       <p>
         <b>{{product.name}}</b>
