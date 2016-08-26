@@ -3,24 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <style media="screen">
+     body{
+       padding: 10px;
+     }
+   </style>
   </head>
   <body>
-    <a href="/dashboard/products">back</a>
-    <h3>Edittng {{product.name}}</h3>
+    <div class="wrapper">
+    <a href="/dashboard/products"><b>Back</b></a>
+    <h3>Edittng {{product.name}}</h3><br>
     <form class="" action="/editproduct/{{product.id}}" method="post" enctype="multipart/form-data">
       {%csrf_token%}
-      Name: <input type="text" name="name" value="{{product.name}}">
-      Description: <textarea name="description" rows="8" cols="40">{{product.description}}</textarea>
-      Categories:
+      Name: <input type="text" name="name" value="{{product.name}}"><br>
+      Description:<br> <textarea name="description" rows="8" cols="40">{{product.description}}</textarea><br>
+      Categories:<br>
       <select class="" name="pickcat">
         {% for category in categories%}
         <option value'{{category.name}}'>{{category.name}}</option>
         {%endfor%}
-      </select>
-      Or add a new category: <input type="text" name="newcat" value="">
-      Price: <input type="text" name="price" value="{{product.price}}">
-      Inventory: <input type="text" name="inventory" value="{{product.inventory}}">
-      Image: <input type="file" name="image" value="" >
+      </select><br>
+      Or add a new category:<br> <input type="text" name="newcat" value=""><br>
+      Price:<br> <input type="text" name="price" value="{{product.price}}"><br>
+      Inventory:<br> <input type="text" name="inventory" value="{{product.inventory}}"><br>
+      Image: <input type="file" name="image" value="" ><br>
       <input type="submit" name="Submit" value="Submit">
     </form>
     {%for message in messages%}
