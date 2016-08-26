@@ -143,13 +143,25 @@ ul.pagination li {
   text-decoration: none;
   color: white;
 }
+.icon{
+	display: inline-block;
+	margin-top:5px;
+}
+#Gzone{
+	margin-top:25px;
+	vertical-align: top;
+}
+#s_cart{
+	margin-left:800px;
+	vertical-align: top;
+}
 
 </style>
 
 <div id="wrapper">
 	<div id="top_nav">
 	<div class="icon">
-		<img src="{{MEDIA_URL}}/photos/Grandma_white.png" alt="" height="60" width="60"/>
+		<a href="/"><img src="{{MEDIA_URL}}/photos/Grandma_white.png" alt="" height="60" width="60"/></a>
 	</div>
 	<h2 id="Gzone">Granny Zone</h2><span id="s_cart"><a href="/checkout">Shopping Cart ({{cartcount}})</a></span>
 	</div>

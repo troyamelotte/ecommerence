@@ -31,6 +31,7 @@ def filter(request, id):
     categories = Category.objects.all()
     paginator = Paginator(products_list, 9)
     page = request.GET.get('page')
+    cartcount = len(request.session['cart'])
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
@@ -40,6 +41,7 @@ def filter(request, id):
     context = {
         'products': products,
         'categories': categories,
+        'cartcount': cartcount,
     }
     return render(request, 'grandmashouse/index.html', context)
 
