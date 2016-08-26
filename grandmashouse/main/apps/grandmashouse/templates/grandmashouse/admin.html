@@ -1,23 +1,181 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>Grandma Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  {% load staticfiles %}
+    <!-- The line above tells Django to be ready to listen for static files -->
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <!-- <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}"media="screen" title="no title"  charset="utf-8"> -->
+
+  <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet"> -->
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+  <style>
+
+  h3 {
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+
+  .login {
+    width: 500px;
+    height: 350px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #e1e1e1;
+    margin-top: 20px;
+  }
+
+  .wrapper {
+    width: 550px;
+    margin: auto;
+  }
+
+  .icon {
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 10px;
+
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .right {
+      position: absolute;
+      right: 200px;
+      width: 600px;
+      border: 3px solid #73AD21;
+      padding: 10px;
+      vertical-align: top;
+  }
+
+  .logout {
+      position: absolute;
+      right: 250px;
+      width: 100px;
+      padding: 10px;
+  }
+
+  .main_content {
+    width: 1000px;
+    height: 600px;
+    margin: auto;
+    vertical-align: top;
+  }
+
+  .left_box {
+    width: 300px;
+    height: 500px;
+    display: inline-block;
+    border: solid 3px;
+    border-color: grey;
+    vertical-align: top;
+    padding-left: 15px;
+  }
+
+  .right_box {
+    width: 600px;
+    height: 200px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+    margin-bottom: 150px;
+  }
+
+  .bottom_right {
+    margin-top: 100px;
+    width: 600px;
+    height: 200px;
+  }
+
+  .shipped{
+    background-color: #009933;
+    width: 250px;
+    border: solid 1px;
+    padding: 15px 5px 5px 15px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .subtotal {
+    border: solid 2px;
+    padding: 5px;
+    width: 250px;
+    display: inline-block;
+    margin-left: 35px;
+  }
+
+  .white {
+    color: white;
+  }
+
+
+
+  /* Beginning next drop down*/
+  .dropbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+  }
+
+  .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 230px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+
+  .dropdown-content li {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+
+  }
+  .dropdown-content a:hover {background-color: #f1f1f1}
+
+  .dropdown:hover .dropdown-content {
+      display: block;
+  }
+
+  .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+  }
+
+  </style>
+</head>
   <body>
+  <div class="wrapper">
     <div class="login">
-      <h3>Admin Login</h3>
-      <form class="" action="/login" method="post">
+      <img class="icon" src="https://cdn4.iconfinder.com/data/icons/avatar-and-user/87/Avatar_person_user_character_man_woman_human-13-512.png" alt="My image" height="60" width="60"/>
+      <h3 class="w3-text-blue-grey">Admin Login</h3>
+      <form class="w3-container"  action="/login" method="post">
         {%csrf_token%}
-        Email: <input type="text" name="email" value="">
-        Password: <input type="password" name='pass'>
-        <input type="submit" name="Submit" value="Login">
+        <label class="w3-label w3-text-blue-grey"><b>Email:</b></label> <input class="w3-input w3-border w3-light-grey" type="text" name="email" value="">
+        <label class="w3-label w3-text-blue-grey"><b>Password:</b></label> <input class="w3-input w3-border w3-light-grey" type="password" name='pass'>
+        <br>
+        <input class="w3-btn w3-blue-grey" type="submit" name="Submit" value="Login">
         {%for message in messages%}
-        {{message}}
+        <p class="w3-label w3-text-blue-grey">{{message}}</p>
         {%endfor%}
       </form>
     </div>
+  </div>
   </body>
 </html>
